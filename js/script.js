@@ -7,13 +7,16 @@ console.log("App is alive");
  */
 function switchChannel(channelName) {
     //Log the channel switch
-    console.log("Tuning in to channel", channelName);
+    console.log("Tuning in to channel", channelName.name);
 
     //Write the new channel to the right app bar
-    document.getElementById('channel-name').innerHTML = channelName;
+    document.getElementById('channel-name').innerHTML = channelName.name;
 
     //#6 change the #channel #location
-    document.getElementById('channel-location').innerHTML = 'by <a href="http://w3w.co/upgrading.never.helps" target="_blank"><strong>upgrading.never.helps</strong></a>';
+    document.getElementById('channel-location').innerHTML = 'by <a href="http://w3w.co/'+ channelName.createdby + '" target="_blank"><strong>' + channelName.createdby + '</strong></a>';
+    
+    //check if the starred property of the channel object is true and return the respective star
+    channelName.starred ? $('#channel-star').addClass('fas fa-star') : $('#channel-star').addClass('fas fa-star');
 
     /* #6 #liking channels on #click */
     $('#channel-star').attr('src', 'http://ip.lfe.mw.tum.de/sections/star-o.png');
@@ -27,6 +30,7 @@ function switchChannel(channelName) {
 /* #6 #liking a channel on #click */
 function star() {
     $('#channel-star').attr('src', 'http://ip.lfe.mw.tum.de/sections/star.png');
+    $('#channel-star').toggleClass('far fa-star');
 }
 
 /**
@@ -50,4 +54,23 @@ function selectTab(tabId) {
 function toggleEmojis() {
     /* $('#emojis').show(); // #show */
     $('#emojis').toggle(); // #toggle
+}
+
+/* create a constructor function for messages */
+
+function Message(text){
+    this.createdBy = 'createdBy',
+    this.latitude = latitude,
+    this.longitude = longitude,
+    this.createdOn = Date.now(),
+    this.expiresOn = new Date(Date.now() + 900000),
+    this.text = text,
+    this.own = true
+}
+/* create sendMessage function */
+function sendMessage(){
+    var message1 = new Message("Hello Chatter");
+    console.log(message1);
+    var textMessage = $("#textMessage").val();
+    
 }
