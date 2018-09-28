@@ -270,3 +270,8 @@ li.selected {
 .message.own {
     margin-left: 17.5%;
 }
+
+/* style for the new icon fonts awesome */
+.fas, .far {
+    font-size: 24px;
+}
